@@ -18,3 +18,15 @@ functions:
             - httpApi:
                   path: /series/{seriesId}
                   method: GET
+    getEpisodes:
+        handler: functions/series/getEpisodes/index.handler
+        events:
+            - httpApi:
+                  path: /series/{seriesId}/seasons/{season}
+                  method: GET
+    getSeriesContent:
+        handler: functions/series/getSeriesContent/index.handler
+        events:
+            - httpApi:
+                  path: /series/{seriesId}/content
+                  method: GET
