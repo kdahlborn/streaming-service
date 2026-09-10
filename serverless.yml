@@ -45,3 +45,9 @@ functions:
             - httpApi:
                   path: /series/{seriesId}/seasons/{season}/episodes/{episode}
                   method: PUT
+    deleteEpisode:
+        handler: functions/episodes/deleteEpisode/index.handler
+        events:
+            - httpApi:
+                  path: /series/{seriesId}/seasons/{season}/episodes/{episode}
+                  method: DELETE

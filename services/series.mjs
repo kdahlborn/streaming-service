@@ -46,3 +46,19 @@ export const getSeriesContent = async (seriesId) => {
         throw createError(500, error.message);
     }
 };
+
+// Add new series
+export const addNewSeries = async (series) => {
+    try {
+        const command = new PutCommand({
+            TableName: 'streaming-db',
+            Item: series,
+        });
+
+        await db.send(command);
+
+        return true;
+    } catch (error) {
+        throw createError(500, error.message);
+    }
+};

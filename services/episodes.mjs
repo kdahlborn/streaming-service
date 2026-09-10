@@ -83,3 +83,22 @@ export const updateEpisode = async (seriesId, season, episode, updates) => {
         throw createError(500, error.message);
     }
 };
+
+// Delete episode
+export const deleteEpisode = async (seriesId, season, episode) => {
+    try {
+        const command = new DeleteCommand({
+            TableName: 'streaming-db',
+            Key: {
+                PK: `SERIES:${seriesId}`,
+                SK: `SEASON:${season}#EPISODE:${episode}`,
+            },
+        });
+
+        await db.send(command);
+
+        return true;
+    } catch (error) {
+        throw createError(500, error.message);
+    }
+};
