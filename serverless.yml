@@ -25,6 +25,20 @@ functions:
             - httpApi:
                   path: /series/{seriesId}/content
                   method: GET
+    addNewSeries:
+        handler: functions/series/addNewSeries/index.handler
+        events:
+            - httpApi:
+                  path: /series
+                  method: POST
+
+    ## SEASONS
+    addNewSeason:
+        handler: functions/seasons/addNewSeason/index.handler
+        events:
+            - httpApi:
+                  path: /series/{seriesId}/seasons
+                  method: POST
 
     ## EPISODES
     getEpisodes:
