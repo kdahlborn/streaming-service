@@ -1,7 +1,7 @@
 import middy from '@middy/core';
 import httpErrorHandler from '@middy/http-error-handler';
 import { sendResponse } from '../../../responses/index.mjs';
-import { getEpisodes } from '../../../services/series.mjs';
+import { getEpisodes } from '../../../services/episodes.mjs';
 
 export const handler = middy(async (event) => {
     const { seriesId, season } = event.pathParameters;

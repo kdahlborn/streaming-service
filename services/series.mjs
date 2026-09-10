@@ -28,26 +28,6 @@ export const getSeries = async (seriesId) => {
     }
 };
 
-// Get episodes
-export const getEpisodes = async (seriesId, season) => {
-    try {
-        const command = new QueryCommand({
-            TableName: 'streaming-db',
-            KeyConditionExpression: 'PK = :pk AND begins_with(SK, :sk)',
-            ExpressionAttributeValues: {
-                ':pk': `SERIES:${seriesId}`,
-                ':sk': `SEASON:${season}#EPISODE:`,
-            },
-        });
-
-        const { Items } = await db.send(command);
-
-        return Items;
-    } catch (error) {
-        throw createError(500, error.message);
-    }
-};
-
 // Get series content
 export const getSeriesContent = async (seriesId) => {
     try {
