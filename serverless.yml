@@ -14,6 +14,34 @@ provider:
         JWT_SECRET: ${env:JWT_SECRET}
 
 functions:
+    ## AUTH
+    register:
+        handler: functions/auth/register/index.handler
+        events:
+            - httpApi:
+                  path: /auth/register
+                  method: POST
+    login:
+        handler: functions/auth/login/index.handler
+        events:
+            - httpApi:
+                  path: /auth/login
+                  method: POST
+
+    ## USERS
+    getUser:
+        handler: functions/users/getUser/index.handler
+        events:
+            - httpApi:
+                  path: /users/me
+                  method: GET
+    addToWatchlist:
+        handler: functions/users/addToWatchlist/index.handler
+        events:
+            - httpApi:
+                  path: /users/me/watchlist
+                  method: post
+
     ## SERIES
     getSeries:
         handler: functions/series/getSeries/index.handler

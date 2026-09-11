@@ -34,3 +34,18 @@ export const getUser = async (email) => {
         throw createError(500, error.message);
     }
 };
+
+export const addToWatchlist = async (watchlistItem) => {
+    try {
+        const command = new PutCommand({
+            TableName: 'streaming-db',
+            Item: watchlistItem,
+        });
+
+        await db.send(command);
+
+        return true;
+    } catch (error) {
+        throw createError(500, error.message);
+    }
+};
